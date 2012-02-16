@@ -5,18 +5,21 @@
   <title>GCLI Plugin</title>
   <script src="plugin.js"></script>
   <script>
+	function qualifyURL(url){
+	    var a = document.createElement('a');
+	    a.href = url; // set string url
+	    return a.href;
+	}
+  
   window.onload = function() {
       var provider = new eclipse.PluginProvider();
-      var serviceImpl = {
-              run: function(text) {
-                  return text.split("").reverse().join("");
-              }
-          };
-      var serviceProperties = { 
-              name: "Reverse Text",
-              key: ["e", true, true] // Ctrl+Shift+e
-          };
-      provider.registerServiceProvider("orion.edit.command", serviceImpl, serviceProperties);
+      var serviceImpl = {};
+	  provider.registerServiceProvider("orion.page.link", serviceImpl, {
+			name: "Console",
+			id: "orion.gcli",
+			href: qualifyURL("console/orion-gcli-console.html#"),
+			target: "Console"
+		});
       provider.connect();
   };
   </script>
