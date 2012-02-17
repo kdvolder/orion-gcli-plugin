@@ -1,3 +1,0 @@
-[submodule "gcli"]
-	path = gcli
-	url = git@github.com:kdvolder/gcli.git
